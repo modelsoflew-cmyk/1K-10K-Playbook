@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Lanka Payment Methods Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --bg: #0a0a18;
+    --bg-elevated: #12122a;
+    --surface: #16162f;
+    --surface-hover: #1c1c3a;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.16);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #64748b;
+    --purple: #8b5cf6;
+    --blue: #3b82f6;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --orange: #fb923c;
+    --red: #ef4444;
+    --cyan: #06b6d4;
+    --gradient-1: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: 
+      radial-gradient(ellipse 800px 600px at 10% -10%, rgba(139, 92, 246, 0.15), transparent),
+      radial-gradient(ellipse 800px 600px at 90% 10%, rgba(59, 130, 246, 0.12), transparent),
+      radial-gradient(ellipse 600px 800px at 50% 100%, rgba(236, 72, 153, 0.08), transparent);
+  }
+
+  ::selection { background: var(--purple); color: white; }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10, 10, 24, 0.75);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-brand-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--gradient-1);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .nav-count {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 100px 24px 60px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    animation: fadeInUp 0.6s var(--ease) backwards;
+  }
+
+  h1 {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.6s var(--ease) 0.1s backwards;
+  }
+
+  h1 .gradient-text {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 17px;
+    max-width: 480px;
+    margin: 0 auto;
+    animation: fadeInUp 0.6s var(--ease) 0.2s backwards;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .search-wrap {
+    max-width: 560px;
+    margin: 40px auto 0;
+    padding: 0 24px;
+    animation: fadeInUp 0.6s var(--ease) 0.3s backwards;
+  }
+
+  .search-box { position: relative; display: flex; align-items: center; }
+
+  .search-box i {
+    position: absolute;
+    left: 20px;
+    color: var(--text-tertiary);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: 0.25s var(--ease);
+  }
+
+  .search-box input::placeholder { color: var(--text-tertiary); }
+
+  .search-box input:focus {
+    border-color: var(--purple);
+    background: var(--surface-hover);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+  }
+
+  .kbd-hint {
+    position: absolute;
+    right: 16px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-family: monospace;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 960px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    animation: fadeInUp 0.6s var(--ease) 0.4s backwards;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: inherit;
+    transition: 0.25s var(--ease);
+    white-space: nowrap;
+  }
+
+  .pill:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
+
+  .pill.active {
+    background: var(--gradient-1);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.35);
+  }
+
+  .pill-count {
+    background: rgba(255,255,255,0.15);
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+
+  .pill:not(.active) .pill-count { background: rgba(255,255,255,0.06); }
+
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  .section { margin-top: 64px; }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .section-title-group { display: flex; align-items: center; gap: 14px; }
+
+  .section-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .icon-full { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+  .icon-partial { background: rgba(245, 158, 11, 0.15); color: var(--yellow); }
+  .icon-crypto { background: rgba(251, 146, 60, 0.15); color: var(--orange); }
+  .icon-bank { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
+  .icon-mobile { background: rgba(139, 92, 246, 0.15); color: var(--purple); }
+  .icon-nokyc { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+  .icon-p2p { background: rgba(6, 182, 212, 0.15); color: var(--cyan); }
+  .icon-kyc { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+
+  .section-title { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+  .section-sub { font-size: 13px; color: var(--text-tertiary); margin-top: 2px; }
+
+  .section-badge {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    transition: 0.3s var(--ease);
+    opacity: 0;
+    transform: translateY(20px);
+    overflow: hidden;
+  }
+
+  .card.visible { opacity: 1; transform: translateY(0); }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 92, 246, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .card:hover::after { opacity: 1; }
+
+  .card:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+  }
+
+  .card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .card h3 { font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; }
+  .card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.55; }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 7px;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .tag-full { background: rgba(16, 185, 129, 0.12); color: var(--green); }
+  .tag-partial { background: rgba(245, 158, 11, 0.12); color: var(--yellow); }
+  .tag-crypto { background: rgba(251, 146, 60, 0.12); color: var(--orange); }
+  .tag-bank { background: rgba(59, 130, 246, 0.12); color: var(--blue); }
+  .tag-mobile { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
+  .tag-nokyc { background: rgba(16, 185, 129, 0.12); color: var(--green); }
+  .tag-p2p { background: rgba(6, 182, 212, 0.12); color: var(--cyan); }
+  .tag-kyc { background: rgba(239, 68, 68, 0.12); color: var(--red); }
+
+  .speed-indicator { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text-tertiary); white-space: nowrap; }
+  .speed-indicator i { font-size: 10px; }
+
+  .verify-row {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .verify-row.verified { color: var(--red); }
+  .verify-row.unverified { color: var(--green); }
+
+  .empty-state { display: none; text-align: center; padding: 100px 20px; color: var(--text-tertiary); }
+  .empty-state.show { display: block; }
+  .empty-state i { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+  .empty-state h3 { color: var(--text-secondary); font-size: 17px; margin-bottom: 6px; }
+
+  .banner { max-width: 1140px; margin: 80px auto 0; padding: 0 24px; }
+
+  .banner-inner {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.08));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner-inner::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 300px; height: 300px;
+    background: var(--gradient-1);
+    filter: blur(100px);
+    opacity: 0.15;
+  }
+
+  .banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .banner-sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 28px; }
+
+  .rec-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; position: relative; }
+
+  .rec-chip {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 14px 22px;
+    border-radius: 12px;
+    text-align: left;
+    transition: 0.25s;
+  }
+
+  .rec-chip:hover { border-color: var(--purple); transform: translateY(-2px); }
+
+  .rec-chip .rec-num {
+    display: inline-flex;
+    width: 20px; height: 20px;
+    background: var(--gradient-1);
+    border-radius: 6px;
+    font-size: 11px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  .rec-chip strong { font-size: 14px; font-weight: 700; }
+  .rec-chip span { display: block; font-size: 11px; color: var(--text-tertiary); margin-top: 3px; margin-left: 28px; }
+
+  .alert { max-width: 1140px; margin: 24px auto 0; padding: 0 24px; }
+
+  .alert-inner {
+    display: flex;
+    gap: 14px;
+    background: rgba(245, 158, 11, 0.06);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+  }
+
+  .alert-inner.danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+
+  .alert-inner.danger i { color: var(--red) !important; }
+  .alert-inner.danger strong { color: var(--red) !important; }
+
+  .alert-inner i { color: var(--yellow); font-size: 18px; margin-top: 1px; }
+  .alert-inner p { font-size: 13.5px; color: var(--text-secondary); }
+  .alert-inner strong { color: var(--yellow); font-weight: 700; }
+
+  footer { text-align: center; padding: 60px 24px 40px; color: var(--text-tertiary); font-size: 13px; }
+  footer .heart { color: #ec4899; }
+
+  .scroll-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 46px;
+    height: 46px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s var(--ease);
+    z-index: 90;
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+  }
+
+  .scroll-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  .scroll-top:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-3px); }
+
+  .hidden-group { display: none !important; }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; }
+    .filters { gap: 8px; }
+    .pill { padding: 8px 14px; font-size: 12.5px; }
+    .banner-inner { padding: 30px 20px; }
+    .rec-chip span { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-brand-icon"><i class="fas fa-globe"></i></div>
+    SL Payment Guide
+  </div>
+  <div class="nav-count" id="visibleCount">43 methods</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow"><span>🇱🇰</span> Sri Lanka Edition · 2025</div>
+  <h1>Send & receive money <span class="gradient-text">from anywhere</span></h1>
+  <p>The complete guide to international payments & crypto for Sri Lankans — verified and unverified options included.</p>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Search Payoneer, Trust Wallet, Binance...">
+    <span class="kbd-hint">⌘K</span>
+  </div>
+</div>
+
+<div class="filters" id="filters">
+  <div class="pill active" data-filter="all">All <span class="pill-count">43</span></div>
+  <div class="pill" data-filter="full">✅ Full <span class="pill-count">9</span></div>
+  <div class="pill" data-filter="partial">⚠️ Partial <span class="pill-count">3</span></div>
+  <div class="pill" data-filter="crypto">💳 Crypto Basic <span class="pill-count">4</span></div>
+  <div class="pill" data-filter="bank">🏦 Bank <span class="pill-count">2</span></div>
+  <div class="pill" data-filter="mobile">📱 Mobile <span class="pill-count">2</span></div>
+  <div class="pill" data-filter="nokyc">🔓 No-KYC Wallets <span class="pill-count">9</span></div>
+  <div class="pill" data-filter="p2p">🔄 P2P Trading <span class="pill-count">6</span></div>
+  <div class="pill" data-filter="kyc">🔐 KYC Exchanges <span class="pill-count">8</span></div>
+</div>
+
+<div class="container">
+
+  <div class="section" data-group="full">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-full"><i class="fas fa-check"></i></div>
+        <div><div class="section-title">Fully Available</div><div class="section-sub">Working smoothly for Sri Lankan users</div></div>
+      </div>
+      <div class="section-badge">9 methods</div>
+    </div>
+    <div class="grid">
+      <div class="card" data-name="payoneer"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-wallet"></i></div><h3>Payoneer</h3></div><p>Best for freelancers — USD/EUR/GBP accounts. Works with Upwork, Fiverr, Amazon.</p><div class="card-footer"><span class="tag tag-full">Recommended</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 1-2 days</span></div></div>
+      <div class="card" data-name="wise"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-exchange-alt"></i></div><h3>Wise</h3></div><p>Excellent currency conversion & bank transfers. Strong for sending.</p><div class="card-footer"><span class="tag tag-full">Sending</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div></div>
+      <div class="card" data-name="skrill"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-coins"></i></div><h3>Skrill</h3></div><p>Popular for freelancing, forex trading, and online purchases.</p><div class="card-footer"><span class="tag tag-full">Freelancer Fav</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="neteller"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-chart-line"></i></div><h3>Neteller</h3></div><p>Widely used for online trading and forex deposits/withdrawals.</p><div class="card-footer"><span class="tag tag-full">Forex</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="western union"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-money-bill-wave"></i></div><h3>Western Union</h3></div><p>Receive remittances via bank deposit or cash pickup islandwide.</p><div class="card-footer"><span class="tag tag-full">Remittance</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div></div>
+      <div class="card" data-name="moneygram"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-hand-holding-usd"></i></div><h3>MoneyGram</h3></div><p>Similar to Western Union — available through major partner banks.</p><div class="card-footer"><span class="tag tag-full">Remittance</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div></div>
+      <div class="card" data-name="remitly"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-paper-plane"></i></div><h3>Remitly</h3></div><p>Receive remittances from abroad with competitive exchange rates.</p><div class="card-footer"><span class="tag tag-full">Remittance</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div></div>
+      <div class="card" data-name="xoom"><div class="card-top"><div class="card-icon icon-full"><i class="fab fa-paypal"></i></div><h3>Xoom (PayPal)</h3></div><p>PayPal's dedicated remittance service to Sri Lankan banks.</p><div class="card-footer"><span class="tag tag-full">PayPal Service</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div></div>
+      <div class="card" data-name="worldremit"><div class="card-top"><div class="card-icon icon-full"><i class="fas fa-globe-americas"></i></div><h3>WorldRemit</h3></div><p>Sends money directly to Sri Lankan bank accounts or mobile wallets.</p><div class="card-footer"><span class="tag tag-full">Remittance</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div></div>
+    </div>
+  </div>
+
+  <div class="section" data-group="partial">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-partial"><i class="fas fa-exclamation"></i></div>
+        <div><div class="section-title">Partially Available</div><div class="section-sub">Limited functionality or workarounds needed</div></div>
+      </div>
+      <div class="section-badge">3 methods</div>
+    </div>
+    <div class="grid">
+      <div class="card" data-name="paypal"><div class="card-top"><div class="card-icon icon-partial"><i class="fab fa-paypal"></i></div><h3>PayPal</h3></div><p>Send only — Sri Lanka cannot officially receive. Payoneer is the workaround.</p><div class="card-footer"><span class="tag tag-partial">Send Only</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="stripe"><div class="card-top"><div class="card-icon icon-partial"><i class="fab fa-stripe"></i></div><h3>Stripe</h3></div><p>Not available directly — requires foreign company registration.</p><div class="card-footer"><span class="tag tag-partial">Restricted</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 2-7 days</span></div></div>
+      <div class="card" data-name="google apple pay"><div class="card-top"><div class="card-icon icon-partial"><i class="fab fa-google-pay"></i></div><h3>Google / Apple Pay</h3></div><p>Local purchases only — not for international money transfers.</p><div class="card-footer"><span class="tag tag-partial">Local Only</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+    </div>
+  </div>
+
+  <div class="section" data-group="crypto">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-crypto"><i class="fab fa-bitcoin"></i></div>
+        <div><div class="section-title">Crypto Basic Options</div><div class="section-sub">General alternative digital payment rails</div></div>
+      </div>
+      <div class="section-badge">4 methods</div>
+    </div>
+    <div class="grid">
+      <div class="card" data-name="binance basic"><div class="card-top"><div class="card-icon icon-crypto"><i class="fas fa-coins"></i></div><h3>Binance Pay</h3></div><p>Receive USDT and convert directly to LKR through peer-to-peer trading.</p><div class="card-footer"><span class="tag tag-crypto">Crypto</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="payeer"><div class="card-top"><div class="card-icon icon-crypto"><i class="fas fa-wallet"></i></div><h3>Payeer</h3></div><p>Multi-currency e-wallet, sometimes used for freelance payments.</p><div class="card-footer"><span class="tag tag-crypto">E-Wallet</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="perfect money"><div class="card-top"><div class="card-icon icon-crypto"><i class="fas fa-chart-line"></i></div><h3>Perfect Money</h3></div><p>Common payment method within forex trading communities.</p><div class="card-footer"><span class="tag tag-crypto">Forex</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="airtm"><div class="card-top"><div class="card-icon icon-crypto"><i class="fas fa-random"></i></div><h3>AirTM</h3></div><p>P2P wallet, sometimes used to bypass regional PayPal limitations.</p><div class="card-footer"><span class="tag tag-crypto">P2P</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+    </div>
+  </div>
+
+  <div class="section" data-group="bank">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-bank"><i class="fas fa-university"></i></div>
+        <div><div class="section-title">Bank-Based Transfers</div><div class="section-sub">Traditional international banking rails</div></div>
+      </div>
+      <div class="section-badge">2 methods</div>
+    </div>
+    <div class="grid">
+      <div class="card" data-name="swift"><div class="card-top"><div class="card-icon icon-bank"><i class="fas fa-landmark"></i></div><h3>SWIFT Transfer</h3></div><p>Direct international wire to Sri Lankan banks — Commercial, Sampath, HNB, BOC.</p><div class="card-footer"><span class="tag tag-bank">Bank Transfer</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 2-5 days</span></div></div>
+      <div class="card" data-name="lankapay"><div class="card-top"><div class="card-icon icon-bank"><i class="fas fa-network-wired"></i></div><h3>LankaPay</h3></div><p>Local network, sometimes linked with international remittance partners.</p><div class="card-footer"><span class="tag tag-bank">Local Network</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div></div>
+    </div>
+  </div>
+
+  <div class="section" data-group="mobile">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-mobile"><i class="fas fa-mobile-alt"></i></div>
+        <div><div class="section-title">Mobile Wallets</div><div class="section-sub">Digital wallets supporting remittances</div></div>
+      </div>
+      <div class="section-badge">2 methods</div>
+    </div>
+    <div class="grid">
+      <div class="card" data-name="ez cash"><div class="card-top"><div class="card-icon icon-mobile"><i class="fas fa-sim-card"></i></div><h3>eZ Cash (Mobitel)</h3></div><p>Links with remittance partners for receiving money to mobile wallet.</p><div class="card-footer"><span class="tag tag-mobile">Mobile Wallet</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div></div>
+      <div class="card" data-name="frimi"><div class="card-top"><div class="card-icon icon-mobile"><i class="fas fa-university"></i></div><h3>Frimi App (NDB)</h3></div><p>NDB Bank's digital wallet with cross-border payment features.</p><div class="card-footer"><span class="tag tag-mobile">Digital Wallet</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div></div>
+    </div>
+  </div>
+
+  <div class="section" data-group="nokyc">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-nokyc"><i class="fas fa-unlock"></i></div>
+        <div><div class="section-title">No-KYC Non-Custodial Wallets</div><div class="section-sub">Just download & use — no ID verification needed, you control your keys</div></div>
+      </div>
+      <div class="section-badge">9 wallets</div>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-name="trust wallet">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-shield"></i></div><h3>Trust Wallet</h3></div>
+        <p>Multi-chain wallet supporting 70+ blockchains. Buy, swap, and stake crypto directly. No sign-up required.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="metamask">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-cube"></i></div><h3>MetaMask</h3></div>
+        <p>The most popular Ethereum wallet. Browser extension + mobile app. Connect to any DeFi platform instantly.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="exodus wallet">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-wallet"></i></div><h3>Exodus Wallet</h3></div>
+        <p>Desktop & mobile wallet with a built-in exchange feature. Supports 250+ cryptocurrencies.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="atomic wallet">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-atom"></i></div><h3>Atomic Wallet</h3></div>
+        <p>Multi-currency wallet with built-in atomic swaps between coins. No registration required at all.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="coinbase wallet">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-circle"></i></div><h3>Coinbase Wallet</h3></div>
+        <p>Self-custody wallet (separate from Coinbase exchange). No KYC needed to create or use.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="safepal">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-shield-halved"></i></div><h3>SafePal</h3></div>
+        <p>Wallet with optional hardware device support. Built-in DApp browser and token swap feature.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="tokenpocket">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-suitcase"></i></div><h3>TokenPocket</h3></div>
+        <p>Popular multi-chain wallet across Asia. Supports Bitcoin, Ethereum, TRON, and many more chains.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="imtoken">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-id-badge"></i></div><h3>imToken</h3></div>
+        <p>Widely used across Asia. Clean interface with built-in DApp browser and staking options.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+      <div class="card" data-name="phantom">
+        <div class="card-top"><div class="card-icon icon-nokyc"><i class="fas fa-ghost"></i></div><h3>Phantom</h3></div>
+        <p>Leading Solana wallet. Fast, low-fee transactions. Now also supports Ethereum & Polygon.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Instant</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Self-custody — you hold the keys</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" data-group="p2p">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-p2p"><i class="fas fa-people-arrows"></i></div>
+        <div><div class="section-title">P2P Trading Platforms</div><div class="section-sub">Buy/sell crypto directly with LKR — verification levels vary</div></div>
+      </div>
+      <div class="section-badge">6 platforms</div>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-name="binance p2p">
+        <div class="card-top"><div class="card-icon icon-p2p"><i class="fas fa-coins"></i></div><h3>Binance P2P</h3></div>
+        <p>Largest P2P marketplace for LKR. Buy/sell USDT directly with local bank transfer.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Basic ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> Basic verification required</div>
+      </div>
+
+      <div class="card" data-name="bybit p2p">
+        <div class="card-top"><div class="card-icon icon-p2p"><i class="fas fa-chart-bar"></i></div><h3>Bybit P2P</h3></div>
+        <p>Growing P2P platform with LKR support. Competitive rates and fast settlement times.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Basic ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> Basic verification required</div>
+      </div>
+
+      <div class="card" data-name="okx p2p">
+        <div class="card-top"><div class="card-icon icon-p2p"><i class="fas fa-gem"></i></div><h3>OKX P2P</h3></div>
+        <p>Reliable P2P trading with multiple payment methods including local bank transfer.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Basic ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> Basic verification required</div>
+      </div>
+
+      <div class="card" data-name="paxful">
+        <div class="card-top"><div class="card-icon icon-p2p"><i class="fas fa-handshake"></i></div><h3>Paxful</h3></div>
+        <p>Global P2P marketplace. Trade with 300+ payment methods. Verification varies by trade size.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Varies</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Small trades often need no ID</div>
+      </div>
+
+      <div class="card" data-name="hodl hodl">
+        <div class="card-top"><div class="card-icon icon-p2p"><i class="fas fa-lock-open"></i></div><h3>HODL HODL</h3></div>
+        <p>Non-custodial P2P exchange. No KYC required at all — trade wallet-to-wallet with multi-sig escrow.</p>
+        <div class="card-footer"><span class="tag tag-nokyc">No ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Completely non-custodial, zero KYC</div>
+      </div>
+
+      <div class="card" data-name="remitano">
+        <div class="card-top"><div class="card-icon icon-p2p"><i class="fas fa-globe-asia"></i></div><h3>Remitano</h3></div>
+        <p>Popular P2P platform in South Asia. Supports LKR trading pairs with built-in escrow protection.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Basic ID Needed</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Minutes</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> Basic verification required</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" data-group="kyc">
+    <div class="section-head">
+      <div class="section-title-group">
+        <div class="section-icon icon-kyc"><i class="fas fa-id-card"></i></div>
+        <div><div class="section-title">Centralized Exchanges (KYC)</div><div class="section-sub">Full-featured exchanges — identity verification required for fiat access</div></div>
+      </div>
+      <div class="section-badge">8 exchanges</div>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-name="binance exchange">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-coins"></i></div><h3>Binance</h3></div>
+        <p>World's largest exchange. Full KYC needed for fiat withdrawal, but P2P works with basic verification.</p>
+        <div class="card-footer"><span class="tag tag-kyc">Full KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 1-2 days</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> ID + selfie verification required</div>
+      </div>
+
+      <div class="card" data-name="kucoin">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-dragon"></i></div><h3>KuCoin</h3></div>
+        <p>Allows limited trading without KYC, but full verification needed for higher withdrawal limits.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Partial KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Limited no-KYC withdrawal allowed</div>
+      </div>
+
+      <div class="card" data-name="bybit exchange">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-chart-line"></i></div><h3>Bybit</h3></div>
+        <p>Popular for derivatives & spot trading. Full KYC required for complete account features.</p>
+        <div class="card-footer"><span class="tag tag-kyc">Full KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 1-2 days</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> ID + selfie verification required</div>
+      </div>
+
+      <div class="card" data-name="okx exchange">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-gem"></i></div><h3>OKX</h3></div>
+        <p>Comprehensive trading platform. Identity verification needed for fiat on/off ramps.</p>
+        <div class="card-footer"><span class="tag tag-kyc">Full KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 1-2 days</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> ID + selfie verification required</div>
+      </div>
+
+      <div class="card" data-name="htx huobi">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-fire"></i></div><h3>HTX (Huobi)</h3></div>
+        <p>Established exchange with a wide altcoin selection. KYC required for most features.</p>
+        <div class="card-footer"><span class="tag tag-kyc">Full KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 1-2 days</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> ID + selfie verification required</div>
+      </div>
+
+      <div class="card" data-name="bitget">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-arrow-trend-up"></i></div><h3>Bitget</h3></div>
+        <p>Known for copy trading features. Verification needed for higher trading limits.</p>
+        <div class="card-footer"><span class="tag tag-kyc">Full KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> 1-2 days</span></div>
+        <div class="verify-row verified"><i class="fas fa-lock"></i> ID + selfie verification required</div>
+      </div>
+
+      <div class="card" data-name="gate.io">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-door-open"></i></div><h3>Gate.io</h3></div>
+        <p>Allows basic trading without full KYC — known for higher no-verification limits than most.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Partial KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Limited no-KYC withdrawal allowed</div>
+      </div>
+
+      <div class="card" data-name="mexc">
+        <div class="card-top"><div class="card-icon icon-kyc"><i class="fas fa-layer-group"></i></div><h3>MEXC</h3></div>
+        <p>Wide selection of altcoins. Allows limited no-KYC trading up to certain withdrawal thresholds.</p>
+        <div class="card-footer"><span class="tag tag-p2p">Partial KYC</span><span class="speed-indicator"><i class="fas fa-bolt"></i> Same day</span></div>
+        <div class="verify-row unverified"><i class="fas fa-lock-open"></i> Limited no-KYC withdrawal allowed</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="empty-state" id="emptyState">
+    <i class="fas fa-inbox"></i>
+    <h3>No matches found</h3>
+    <p>Try a different search term or filter</p>
+  </div>
+
+</div>
+
+<div class="banner">
+  <div class="banner-inner">
+    <h2>🔑 Recommended Setup</h2>
+    <p class="banner-sub">The optimal combination for freelancers, traders & remote workers</p>
+    <div class="rec-row">
+      <div class="rec-chip"><span class="rec-num">1</span><strong>Payoneer</strong><span>Primary account</span></div>
+      <div class="rec-chip"><span class="rec-num">2</span><strong>Trust Wallet</strong><span>No-KYC crypto storage</span></div>
+      <div class="rec-chip"><span class="rec-num">3</span><strong>Binance P2P</strong><span>Convert USDT to LKR</span></div>
+      <div class="rec-chip"><span class="rec-num">4</span><strong>Western Union</strong><span>Family remittance</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="alert">
+  <div class="alert-inner">
+    <i class="fas fa-triangle-exclamation"></i>
+    <p><strong>Important:</strong> PayPal & Stripe don't officially support receiving money in Sri Lanka due to central bank regulations. Payoneer or Skrill remain the go-to alternatives.</p>
+  </div>
+</div>
+
+<div class="alert">
+  <div class="alert-inner danger">
+    <i class="fas fa-shield-halved"></i>
+    <p><strong>Crypto Safety Note:</strong> Non-custodial wallets (Trust Wallet, MetaMask, etc.) give you full control — but also full responsibility. Never share your seed phrase. If you lose it, funds are unrecoverable. No-KYC platforms carry counterparty risk — always use escrow-protected P2P trades.</p>
+  </div>
+</div>
+
+<footer>
+  Made with <span class="heart">♥</span> for Sri Lankan freelancers, traders & families
+</footer>
+
+<div class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('scrollProgress').style.width = progress + '%';
+    const scrollBtn = document.getElementById('scrollTop');
+    if (scrollTop > 500) scrollBtn.classList.add('show');
+    else scrollBtn.classList.remove('show');
+  });
+
+  document.getElementById('scrollTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 30);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+    });
+  });
+
+  const searchInput = document.getElementById('searchInput');
+  const pills = document.querySelectorAll('.pill');
+  const sections = document.querySelectorAll('.section');
+  const emptyState = document.getElementById('emptyState');
+  const visibleCount = document.getElementById('visibleCount');
+
+  let activeFilter = 'all';
+
+  function updateView() {
+    const term = searchInput.value.toLowerCase().trim();
+    let totalVisible = 0;
+
+    sections.forEach(section => {
+      const group = section.getAttribute('data-group');
+      let sectionVisible = 0;
+
+      section.querySelectorAll('.card').forEach(card => {
+        const name = card.getAttribute('data-name');
+        const matchesSearch = name.includes(term);
+        const matchesFilter = activeFilter === 'all' || activeFilter === group;
+
+        if (matchesSearch && matchesFilter) {
+          card.style.display = 'block';
+          sectionVisible++;
+          totalVisible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      section.classList.toggle('hidden-group', sectionVisible === 0);
+    });
+
+    emptyState.classList.toggle('show', totalVisible === 0);
+    visibleCount.textContent = `${totalVisible} method${totalVisible !== 1 ? 's' : ''}`;
+  }
+
+  searchInput.addEventListener('input', updateView);
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.getAttribute('data-filter');
+      updateView();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+</script>
+
+</body>
+</html>
